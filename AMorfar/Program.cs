@@ -14,12 +14,21 @@ void menu()
 {
     Console.Clear();
 
-    Console.WriteLine("1 - Registrar Cliente");
-    Console.WriteLine("2 - Listar Clientes");
-    Console.WriteLine("3 - Buscar Cliente");
+    Console.WriteLine("1 - Agregar persona");
+    Console.WriteLine("2 Mostrar todos");
+    Console.WriteLine("3 - Buscar");
     Console.WriteLine("4 - Salir");
     Console.Write("Seleccione una opción: ");
-    int select = int.Parse(Console.ReadLine());
+    var option = Console.ReadLine();
+
+    // Intenta parsear a int, si no se puede devuelve false. Si puede, se asigna a la variable 'select'
+    if (!int.TryParse(option, out int select))
+    {
+        Console.WriteLine("Opción no válida");
+        Console.ReadKey();
+        option = null;
+        menu();
+    }
 
     switch (select)
     {
@@ -44,15 +53,11 @@ void menu()
 
     void Save()
     {
-        Persona client = new();
-        Console.Write("DNI: ");
-        client.DNI = Console.ReadLine();
+        Persona persona = new();
         Console.Write("Nombre: ");
-        client.nombre = Console.ReadLine();
-        Console.Write("Apellido: ");
-        client.apellido = Console.ReadLine();
+        persona.Nombre = Console.ReadLine();
 
-        bool result = actividad.Save(client);
+        bool result = actividad.Save(persona);
 
         if (!result)
             Console.WriteLine("No se pudo registrar el cliente");
@@ -65,27 +70,36 @@ void menu()
 
     void Get()
     {
-        Console.Write("DNI: ");
-        string dni = Console.ReadLine();
-        Persona? client = actividad.Get(dni);
+        Console.Write("Buscar: ");
+        string busqueda = Console.ReadLine();
+        List<Persona>? resultadoBusqueda = actividad.Get(busqueda);
 
-        if (client == null)
-            Console.WriteLine("Cliente no encontrado");
+        if (resultadoBusqueda == null)
+            Console.Write("No se encontraron resultados");
         else
-            Console.WriteLine($"Nombre: {client.nombre} {client.apellido}");
+        {
+            Console.WriteLine("Resultados: ");
+            for(int i = 0; i < resultadoBusqueda.Count; i++)
+            {
+                Console.WriteLine($"{i+1}. {resultadoBusqueda[i].Nombre}");
+            }
+        }
         Console.ReadKey();
         menu();
     }
 
     void GetAll()
     {
-        Console.Clear();
-        List<Persona> clients = actividad.GetAll();
-        foreach (Persona client in clients)
+        List<Persona> resultado = actividad.GetAll();
+        if (resultado.Count == 0)
+            Console.WriteLine("No hay registros");
+        else
         {
-            Console.WriteLine($"DNI: {client.DNI}");
-            Console.WriteLine($"Nombre: {client.nombre} {client.apellido}");
-            Console.WriteLine("---------------------------------------");
+            Console.WriteLine("Personas: ");
+            for (int i = 0; i < resultado.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {resultado[i].Nombre}");
+            }
         }
         Console.ReadKey();
         menu();

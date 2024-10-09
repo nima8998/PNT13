@@ -21,6 +21,6 @@ namespace AMorfar.Negocios.Entidades
         [MaxLength(50)]
         public string? Apellido { get; set; }
 
-        public List<Comanda>? Comandas { get; set; }
+        //public List<Comanda>? Comandas { get; set; }
     }
 }

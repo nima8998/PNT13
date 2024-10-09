@@ -15,5 +15,8 @@ namespace AMorfar.Negocios.Entidades
         public string Nombre { get; set; }
         [Required]
         public double Precio { get; set; }
+
+        [Required]
+        public int Cantidad { get; set; }
     }
 }

@@ -13,12 +13,19 @@ namespace AMorfar.Negocios.Actividades
         PersistirCliente persistir = new();
         public bool Save(Persona newClient)
         {
-            return persistir.Save(newClient);
+            try
+            {
+                return persistir.Save(newClient);
+
+            }catch (Exception e)
+            {
+                return false;
+            }
         }
 
-        public Persona? Get(string dni)
+        public List<Persona>? Get(string busqueda)
         {
-            return persistir.Get(dni);
+            return persistir.Get(busqueda);
         }
 
         public List<Persona> GetAll()

@@ -24,9 +24,9 @@ namespace AMorfar.Persistencias
             return result;
         }
 
-        public Persona? Get(string dni)
+        public List<Persona>? Get(string busqueda)
         {
-            Persona? result = (from c in contexto.Personas where c.DNI == dni select c).FirstOrDefault();
+            List<Persona>? result = (from c in contexto.Personas where c.Nombre.Contains(busqueda) select c)?.ToList();
             return result;
 
         }

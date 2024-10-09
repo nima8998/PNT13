@@ -10,10 +10,10 @@ namespace AMorfar.Negocios.Entidades
     public class Pedido
     {
         [Key]
-        public int ID;
+        public int ID { get; set; }
 
-        public double Total;
+        public double Total { get; set; }
 
-        public List<Comanda>? Comandas;
+        //public List<Comanda>? Comandas { get; set;  }
     }
 }
