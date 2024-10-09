@@ -13,6 +13,6 @@ namespace AMorfar.Negocios.Entidades
         public List<Producto>? Productos { get; set; }
     }
     //COMMIT: Para guardar los cambios localmente y comprometerse.
-    //PULL: Se asegura de tener la ultima versión del proyecto en GitHub y lo guarda localmente en mi PC.
-    //PUSH: Sube los cambios en el proyecto al repositorio remoto de donde fue extraído.
+    //PULL: Se asegura de tener la ultima versión del proyecto en GitHub y lo guarda localmente en mi PC. (Entrantes)
+    //PUSH: Sube los cambios en el proyecto al repositorio remoto de donde fue extraído. (Salientes)
 }
