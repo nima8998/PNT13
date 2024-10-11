@@ -15,7 +15,7 @@ void menu()
     Console.Clear();
 
     Console.WriteLine("1 - Agregar persona");
-    Console.WriteLine("2 Mostrar todos");
+    Console.WriteLine("2 - Mostrar todos");
     Console.WriteLine("3 - Buscar");
     Console.WriteLine("4 - Salir");
     Console.Write("Seleccione una opción: ");
@@ -56,13 +56,17 @@ void menu()
         Persona persona = new();
         Console.Write("Nombre: ");
         persona.Nombre = Console.ReadLine();
+        Console.Write("Apellido: ");
+        persona.Apellido = Console.ReadLine();
+        Console.Write("DNI: ");
+        persona.DNI = Console.ReadLine();
 
         bool result = actividad.Save(persona);
 
         if (!result)
-            Console.WriteLine("No se pudo registrar el cliente");
+            Console.WriteLine("No se pudo agregar.");
         else
-            Console.WriteLine("Cliente registrado");
+            Console.WriteLine("Persona agregada.");
 
         Console.ReadKey();
         menu();

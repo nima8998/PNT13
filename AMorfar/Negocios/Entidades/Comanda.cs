@@ -8,11 +8,8 @@ namespace AMorfar.Negocios.Entidades
 {
     public class Comanda
     {
-        public int ID { get; set; } //HOLA MUCHACHOS
+        public int ID { get; set; }
         //public List<Persona>? Personas { get; set; }
         //public List<Producto>? Productos { get; set; }
     }
-    //COMMIT: Para guardar los cambios localmente y comprometerse.
-    //PULL: Se asegura de tener la ultima versión del proyecto en GitHub y lo guarda localmente en mi PC. (Entrantes)
-    //PUSH: Sube los cambios en el proyecto al repositorio remoto de donde fue extraído. (Salientes)
 }
